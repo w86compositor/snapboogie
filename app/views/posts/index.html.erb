@@ -1,6 +1,8 @@
-<% @posts.each do |post| %>
-
-<%= image_tag post.picture.url(:medium) %> <br>
-<%= post.caption %>
-
-<% end %>
+<div class="container d-flex flex-column justify-content-center">
+	<div class="row col-sm-12 col-md-12 justify-content-center" style="padding-top: 60px;">
+		<% @posts.each do |post| %>
+		<%= image_tag post.picture.url(:large) %> <br>
+		<%= post.caption %>
+		<% end %>
+	</div>
+</div>
