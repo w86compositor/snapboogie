@@ -1,1 +1,8 @@
 <h1>SnapBoogie</h1>
+
+<% @posts.each do |post| %>
+
+<%= image_tag post.picture.url(:medium) %> <br>
+<%= post.caption %>
+
+<% end %>
