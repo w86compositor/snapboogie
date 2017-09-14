@@ -1,8 +1,20 @@
-<div class="container d-flex flex-column justify-content-center">
-	<div class="row col-sm-12 col-md-12 justify-content-center" style="padding-top: 60px;">
-		<% @posts.each do |post| %>
-		<%= image_tag post.picture.url(:large) %> <br>
-		<%= post.caption %>
-		<% end %>
+<div class="container">
+	<div class="row" style="padding-top: 60px;">
+			<% @posts.each do |post| %>
+		<div class="col-lg-12">
+			<div class="card" style="width: 640px; margin: 0 auto 40px auto">
+			  <div class="card-header" style="color: #125688;">
+			    <h3><%= post.caption %></h3>	
+			  </div>
+			  <div class="card-body p-0">
+			    <%= image_tag post.picture.url, class: 'img-fluid' %>
+			  </div>
+			  <div class="card-footer">
+			    2 days ago
+			  </div>
+			</div>
+		</div>
+			<% end %>
 	</div>
 </div>
+
