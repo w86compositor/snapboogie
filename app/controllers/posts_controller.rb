@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
+	before_action :set_post, only: [:show, :edit, :update, :destroy]
 	
 	def index
 		@posts = Post.all
 	end
 
 	def show
-		@post = Post.find(params[:id])
 	end
 
 	def new
@@ -13,22 +13,29 @@ class PostsController < ApplicationController
 	end
 
 	def edit
-		@post = Post.find(params[:id])
 	end
 	
 	def create
-		@post = Post.create(post_params)
+		if @post = Post.create(post_params)
+			flash[:notice] = "Your post has been created!"
 		redirect_to root_path
+		else
+			flash.now[:alert] = "Your post could not be created, please check the form."
+			render :new
+		end
 	end
 
 	def update
-		@post = Post.find(params[:id])
-		@post.update(post_params)
-		redirect_to post_path(@post)
+		if @post.update(post_params)
+			flash[:notice] = "Post updated!"
+			redirect_to post_path(@post)
+		else
+			flash.now[:notice] = "Update failed. Please check the form."
+			render :edit
+		end
 	end
 
 	def destroy
-		@post = Post.find(params[:id])
 		@post.destroy
 
 		redirect_to  posts_path
@@ -38,6 +45,10 @@ private
 
 # Use strong_parameters for attribute whitelisting
 # Be sure to update your create() and update() controller methods.
+
+	def set_post
+		@post = Post.find(params[:id])
+	end
 
 	def post_params
 	  params.require(:post).permit(:picture, :caption)
