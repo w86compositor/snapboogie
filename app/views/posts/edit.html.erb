@@ -1,9 +1,18 @@
-<%= simple_form_for @post, html: { multipart: true } do |f| %>
+<div class="container">
+	<div class="row" style="padding-top: 60px;">
+		<div class="card" style="width: 640px; margin: 0 auto 40px auto">
+			<%= image_tag @post.picture.url, class: 'img-fluid' %>
 
-<%= f.input :picture %>
+			<%= simple_form_for @post, html: { multipart: true } do |f| %>
 
-<%= f.input :caption %>
+			<%= f.input :picture %>
 
-<%= f.button :submit, class: 'btn-success' %>
-<% end %>
+			<%= f.input :caption %>
 
+			<%= f.button :submit, class: 'btn-success' %>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<!-- I need to include a cancel button here later that takes you back to your profile or the last post -->
