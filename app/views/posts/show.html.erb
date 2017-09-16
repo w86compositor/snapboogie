@@ -1,0 +1,18 @@
+<div class="container">
+	<div class="row" style="padding-top: 60px;">
+		<div class="col-lg-12">
+			<div class="card" style="width: 640px; margin: 0 auto 40px auto">
+			  <div class="card-header" style="color: #125688;">
+			    <h3><%= @post.caption %></h3>	
+			  </div>
+			  <div class="card-body p-0">
+			    <%= image_tag @post.picture.url, class: 'img-fluid' %>
+			  </div>
+			  <div class="card-footer">
+			    <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+			    <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>
